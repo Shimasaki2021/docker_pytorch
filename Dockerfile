@@ -72,6 +72,10 @@ RUN python3 -m pip install --no-cache-dir \
             jupyter \
             ipykernel
 
+RUN python3 -m pip install --no-cache-dir \
+            scikit-image \
+            matplotlib
+
 # -------------------------------
 #  Dockerコンテナ起動時スクリプト
 # -------------------------------

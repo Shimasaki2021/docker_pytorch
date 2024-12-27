@@ -17,7 +17,10 @@ RUN if [ `cat /etc/passwd | grep ${UID} | awk -F':' '{print $1}'` != "" ]; then 
 fi
 
 RUN groupadd -g ${GID} ${GROUPNAME} && \
-	useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USERNAME}
+	useradd -m -s /bin/bash -u ${UID} -g ${GID} ${USERNAME} && \
+    mkdir -p /run/user/${UID} && \
+    chown -R ${USERNAME}:${GROUPNAME} /run/user/${UID} && \
+    chmod 700 /run/user/${UID}
 
 # ------------------------------
 #  Ubuntu更新、アプリインストール
@@ -74,7 +77,8 @@ RUN python3 -m pip install --no-cache-dir \
 
 RUN python3 -m pip install --no-cache-dir \
             scikit-image \
-            matplotlib
+            matplotlib \
+            labelImg
 
 # -------------------------------
 #  Dockerコンテナ起動時スクリプト

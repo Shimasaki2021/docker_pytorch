@@ -28,9 +28,8 @@ RUN groupadd -g ${GID} ${GROUPNAME} && \
 
 # OpenGL関連(labelImgで「 MESA: error: ZINK: failed to choose pdev」というエラーが出るので、その対策)
 RUN apt-get update && \
-    apt-get install -y software-properties-common
-
-RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    apt-get update && \
     add-apt-repository ppa:kisak/kisak-mesa
 
 # wget以外は必須ではない。
@@ -88,7 +87,7 @@ RUN python3 -m pip install --no-cache-dir \
             opencv-python \
             tqdm \
             scikit-learn \
-            labelImg
+            labelImg==1.8.6
 
 # ★★★ labelImg(1.8.6)のbug修正 (labelImg/pythonのバージョンが違う場合は要カスタマイズ) ★★★
 #   https://note.com/nagisa_hoshimori/n/n4bb4a4a5019d

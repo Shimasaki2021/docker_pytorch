@@ -92,8 +92,8 @@ RUN python3 -m pip install --no-cache-dir \
 # ★★★ labelImg(1.8.6)のbug修正 (labelImg/pythonのバージョンが違う場合は要カスタマイズ) ★★★
 #   https://note.com/nagisa_hoshimori/n/n4bb4a4a5019d
 #   labelImgをインストールしない場合は、ここはCommentOut
-COPY tool_bugfix/labelimg_1.8.6/labelImg/labelImg.py /usr/local/lib/python3.12/dist-packages/labelImg/
-COPY tool_bugfix/labelimg_1.8.6/libs/canvas.py /usr/local/lib/python3.12/dist-packages/libs/
+COPY tool_patch/labelimg_1.8.6/labelImg/labelImg.py /usr/local/lib/python3.12/dist-packages/labelImg/
+COPY tool_patch/labelimg_1.8.6/libs/canvas.py /usr/local/lib/python3.12/dist-packages/libs/
 
 # -------------------------------
 #  Dockerコンテナ起動時スクリプト

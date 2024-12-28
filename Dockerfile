@@ -30,7 +30,7 @@ RUN groupadd -g ${GID} ${GROUPNAME} && \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wget && \
-    apt-get install -y htop vim nano less x11-apps
+    apt-get install -y htop vim nano less x11-apps git
 
 # ---------------------------------------
 #  CUDA(NVIDIA GPU開発環境)のインストール
@@ -78,6 +78,9 @@ RUN python3 -m pip install --no-cache-dir \
 RUN python3 -m pip install --no-cache-dir \
             scikit-image \
             matplotlib \
+            opencv-python \
+            tqdm \
+            scikit-learn \
             labelImg
 
 # -------------------------------

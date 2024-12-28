@@ -36,7 +36,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y wget && \
-    apt-get install -y htop vim nano less x11-apps git
+    apt-get install -y htop vim nano less x11-apps git zip unzip
 
 # ---------------------------------------
 #  CUDA(NVIDIA GPU開発環境)のインストール

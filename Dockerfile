@@ -26,6 +26,13 @@ RUN groupadd -g ${GID} ${GROUPNAME} && \
 #  Ubuntu更新、アプリインストール
 # ------------------------------
 
+# OpenGL関連(labelImgで「 MESA: error: ZINK: failed to choose pdev」というエラーが出るので、その対策)
+RUN apt-get update && \
+    apt-get install -y software-properties-common
+
+RUN apt-get update && \
+    add-apt-repository ppa:kisak/kisak-mesa
+
 # wget以外は必須ではない。
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -82,6 +89,12 @@ RUN python3 -m pip install --no-cache-dir \
             tqdm \
             scikit-learn \
             labelImg
+
+# ★★★ labelImg(1.8.6)のbug修正 (labelImg/pythonのバージョンが違う場合は要カスタマイズ) ★★★
+#   https://note.com/nagisa_hoshimori/n/n4bb4a4a5019d
+#   labelImgをインストールしない場合は、ここはCommentOut
+COPY tool_bugfix/labelimg_1.8.6/labelImg/labelImg.py /usr/local/lib/python3.12/dist-packages/labelImg/
+COPY tool_bugfix/labelimg_1.8.6/libs/canvas.py /usr/local/lib/python3.12/dist-packages/libs/
 
 # -------------------------------
 #  Dockerコンテナ起動時スクリプト

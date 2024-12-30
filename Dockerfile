@@ -94,6 +94,7 @@ RUN python3 -m pip install --no-cache-dir \
 #   labelImgをインストールしない場合は、ここはCommentOut
 COPY tool_patch/labelimg_1.8.6/labelImg/labelImg.py /usr/local/lib/python3.12/dist-packages/labelImg/
 COPY tool_patch/labelimg_1.8.6/libs/canvas.py /usr/local/lib/python3.12/dist-packages/libs/
+COPY tool_patch/labelimg_1.8.6/libs/shape.py /usr/local/lib/python3.12/dist-packages/libs/
 
 # -------------------------------
 #  Dockerコンテナ起動時スクリプト
